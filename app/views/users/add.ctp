@@ -3,7 +3,7 @@
 	<fieldset>
  		<legend><?php __('Add User');?></legend>
 	<?php
-		echo $form->input('uid');
+		echo $form->input('id');
 		echo $form->input('username');
 		echo $form->input('password');
 		echo $form->input('group_id');

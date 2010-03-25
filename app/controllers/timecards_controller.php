@@ -3,6 +3,12 @@
 class TimecardsController extends AppController {
 	var $name = 'Timecards';
 	
+	function beforeFilter() {
+    	parent::beforeFilter(); 
+    	$this->Auth->allowedActions = array('index', 'view');
+	}
+	
+	
 	function index() {
 		$this->set('timecards', $this->Timecard->find('all'));
 	}
