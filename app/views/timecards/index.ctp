@@ -1,12 +1,12 @@
 <!-- File: /app/views/posts/index.ctp -->
 
-<h1>Timecards</h1>
+<h1>Time Cards</h1>
 <?php echo $html->link('Add Timecard',array('controller' => 'timecards', 'action' => 'add'))?>
 <table>
 	<tr>
-		<th>Hours</th>
-		<th>Class</th>
-		<th>Units</th>
+		<th>Employee Name</th>
+		<th>Employee Number</th>
+		<th>Total Hours</th>
 		<th>Delete</th>
 		<th>Edit</th>
 	</tr>
@@ -30,3 +30,8 @@
 	</tr>
 	<?php endforeach; ?>
 </table>
+<div class="actions">
+	<ul>
+		<li><?php echo $html->link(__('Logout', true), array('controller'=>'users', 'action'=>'logout')); ?></li>
+	</ul>
+</div>
