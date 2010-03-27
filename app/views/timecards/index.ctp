@@ -15,17 +15,17 @@
 
 	<?php foreach ($timecards as $timecard): ?>
 	<tr>
-		<td><?php echo $timecard['Timecard']['id']; ?></td>
 		<td>
-			<?php echo $html->link($timecard['Timecard']['class'], 
-				array('controller' => 'timecards', 'action' => 'view', $timecard['Timecard']['id'])); ?>
+			<?php echo $html->link($timecard['Timecard']['emp_name'], 
+				array('controller' => 'timecards', 'action' => 'view', $timecard['Timecard']['timecard_id'])); ?>
 		</td>
-		<td><?php echo $timecard['Timecard']['created']; ?></td>
+		<td><?php echo $timecard['Timecard']['emp_num']; ?></td>
+		<td><?php echo $timecard['Timecard']['emp_num']; ?></td>
 		<td>
-			<?php echo $html->link('Delete', array('action' => 'delete', 'id' => $timecard['Timecard']['id']), null, 'Are you sure?' )?>
+			<?php echo $html->link('Delete', array('action' => 'delete', 'id' => $timecard['Timecard']['timecard_id']), null, 'Are you sure?' )?>
 		</td>
 		<td>
-			<?php echo $html->link('Edit', array('action'=>'edit', 'id'=>$timecard['Timecard']['id']));?>
+			<?php echo $html->link('Edit', array('action'=>'edit', 'id'=>$timecard['Timecard']['timecard_id']));?>
 		</td>
 	</tr>
 	<?php endforeach; ?>
