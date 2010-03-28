@@ -46,7 +46,6 @@ class TimecardsController extends AppController {
 		}
 	}
 	
-	
 }
 
 

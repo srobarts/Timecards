@@ -11,5 +11,7 @@ class AppController extends Controller {
         $this->Auth->actionPath = 'controllers/';
         $this->Auth->allowedActions = array('display');
     }
+	
+    
 }
 ?>
