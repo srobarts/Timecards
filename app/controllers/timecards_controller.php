@@ -18,6 +18,19 @@ class TimecardsController extends AppController {
 		$this->set('timecards', $this->Timecard->read());
 	}
 	
+	//Function will print out to the screen all the timeentries for a given
+	//timecard.  Id passed in is the timecard id, we will then have to do
+	//a lookup of the timentries for that timecard.
+	function view_timecard($id = null) {
+		if(!$id) {
+			$this->Session->SetFlash(_('No timeentries.', true));
+			$this->redirect(array('action'=>'index'));
+		} 
+		$this->Timeentry->id = $id;
+		$this->set('timeentries', $this->Timeentry->find('all'));
+	}
+	
+	
 	function add() {
 		if (!empty($this->data)) {
 			if ($this->Timecard->save($this->data)) {

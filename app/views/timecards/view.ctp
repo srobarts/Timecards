@@ -7,7 +7,8 @@
 <table>
 	<tr>
 		<td>
-			<?php array('controller' => 'timeentries', 'action' => 'index'); ?>
+			<?php $id = 15; ?>
+			<?php echo $this->requestAction(array('controller' => 'timeentries', 'action' => 'index'), array('return')); ?>		
 		</td>
 	</tr>
 </table>
