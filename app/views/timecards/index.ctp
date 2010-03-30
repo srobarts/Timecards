@@ -17,7 +17,7 @@
 	<tr>
 		<td>
 			<?php echo $html->link($timecard['Timecard']['emp_name'], 
-				array('controller' => 'timecards', 'action' => 'view', $timecard['Timecard']['id'])); ?>
+				array('controller' => 'timecards', 'action' => 'view_timecard', $timecard['Timecard']['id'])); ?>
 		</td>
 		<td><?php echo $timecard['Timecard']['emp_num']; ?></td>
 		<td><?php echo $timecard['Timecard']['emp_num']; ?></td>

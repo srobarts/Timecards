@@ -4,9 +4,14 @@ class TimecardsController extends AppController {
 	var $name = 'Timecards';
 	
 	function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('*');
+	}
+	
+	/*function beforeFilter() {
     	parent::beforeFilter(); 
     	$this->Auth->allowedActions = array('index', 'view');
-	}
+	}*/
 	
 	
 	function index() {
@@ -26,8 +31,11 @@ class TimecardsController extends AppController {
 			$this->Session->SetFlash(_('No timeentries.', true));
 			$this->redirect(array('action'=>'index'));
 		} 
-		$this->Timeentry->id = $id;
-		$this->set('timeentries', $this->Timeentry->find('all'));
+		$this->Timecard->id = $id;
+		//$this->set('timecards', $this->Timecard->findAllById($id));
+		//$this->set('timecards', $this->Timecard->find('all', array('fields'=>array('id','emp_name'), 'conditions'=>array('id'=>$id))));
+		$this->Timecard->bindModel(array('hasOne'=>array('Timeentry')));
+		$this->set('timecards', $this->Timecard->find('all', array('fields'=>array('Timecard.id','Timecard.emp_name', 'Timeentry.reference'), 'conditions'=>array('Timecard.id'=> $id))));
 	}
 	
 	
