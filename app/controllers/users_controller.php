@@ -294,6 +294,10 @@ function initDB() {
     $this->Acl->deny($group, 'controllers');                
     $this->Acl->allow($group, 'controllers/Widgets/add');
     $this->Acl->allow($group, 'controllers/Widgets/edit');
+    $this->Acl->allow($group, 'controllers/Timecards/view_timecard');
+    $this->Acl->allow($group, 'controllers/Timeentries/add');
+    $this->Acl->allow($group, 'controllers/Timeentries/edit');
+    $this->Acl->allow($group, 'controllers/Timeentries/delete');
 }
 	
 	

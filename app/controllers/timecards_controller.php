@@ -3,19 +3,25 @@
 class TimecardsController extends AppController {
 	var $name = 'Timecards';
 	
-	function beforeFilter() {
+	/*function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('*');
-	}
-	
-	/*function beforeFilter() {
-    	parent::beforeFilter(); 
-    	$this->Auth->allowedActions = array('index', 'view');
 	}*/
+	
+	function beforeFilter() {
+    	parent::beforeFilter(); 
+    	$this->Auth->allowedActions = array('index', 'view', 'view_timecard');
+	}
 	
 	
 	function index() {
-		$this->set('timecards', $this->Timecard->find('all'));
+		$emp_num = $this->Session->Read('Auth.User.emp_num');
+		$group_id = $this->Session->Read('Auth.User.group_id');
+		if($group_id == 3) {
+			$this->set('timecards', $this->Timecard->find('all', array('fields'=>array('Timecard.*'), 'conditions'=>array('Timecard.emp_num'=> $emp_num))));
+		} else if($group_id == 1 || $group_id == 2) {
+			$this->set('timecards', $this->Timecard->find('all'));
+		}
 	}
 	
 	function view($id = null) {
@@ -32,10 +38,11 @@ class TimecardsController extends AppController {
 			$this->redirect(array('action'=>'index'));
 		} 
 		$this->Timecard->id = $id;
+		$this->Session->write('Timecard.TimecardId', $id);
 		//$this->set('timecards', $this->Timecard->findAllById($id));
 		//$this->set('timecards', $this->Timecard->find('all', array('fields'=>array('id','emp_name'), 'conditions'=>array('id'=>$id))));
 		$this->Timecard->bindModel(array('hasOne'=>array('Timeentry')));
-		$this->set('timecards', $this->Timecard->find('all', array('fields'=>array('Timecard.id','Timecard.emp_name', 'Timeentry.reference'), 'conditions'=>array('Timecard.id'=> $id))));
+		$this->set('timecards', $this->Timecard->find('all', array('fields'=>array('Timecard.*', 'Timeentry.*'), 'conditions'=>array('Timecard.id'=> $id))));
 	}
 	
 	
