@@ -42,6 +42,7 @@ class TimecardsController extends AppController {
 		//$this->set('timecards', $this->Timecard->findAllById($id));
 		//$this->set('timecards', $this->Timecard->find('all', array('fields'=>array('id','emp_name'), 'conditions'=>array('id'=>$id))));
 		$this->Timecard->bindModel(array('hasOne'=>array('Timeentry')));
+		$this->set('total_hours', $this->Timecard->query("SELECT SUM(hours) AS hours FROM timeentries WHERE timeentries.timecard_id = ". $id));
 		$this->set('timecards', $this->Timecard->find('all', array('fields'=>array('Timecard.*', 'Timeentry.*'), 'conditions'=>array('Timecard.id'=> $id))));
 	}
 	

@@ -8,7 +8,8 @@
 		<th>Employee Number</th>
 		<th>Date Ending</th>
 		<?php 	$group_id = $session->read('Auth.User.group_id');
-				if(!($group_id == 3)){ ?>
+				if(!($group_id == 3 || $group_id == 2)){ ?>
+		<!--  only allow admins to delete and edit timecards -->
 		<th>Delete</th>
 		<th>Edit</th>
 		<?php } ?>
@@ -25,7 +26,7 @@
 		<td><?php echo $timecard['Timecard']['emp_num']; ?></td>
 		<td><?php echo $timecard['Timecard']['date_ending']; ?></td>
 		<?php 	$group_id = $session->read('Auth.User.group_id');
-				if(!($group_id == 3)){ ?>
+				if(!($group_id == 3 || $group_id == 2)){ ?>
 		<td>
 			<?php echo $html->link('Delete', array('action' => 'delete', 'id' => $timecard['Timecard']['id']), null, 'Are you sure?' )?>
 		</td>
