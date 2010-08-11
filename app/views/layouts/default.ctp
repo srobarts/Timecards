@@ -41,7 +41,7 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1>Timecards</h1>
+			<h1>North Vancouver District Library Timecards Applicaton</h1>
 		</div>
 		<div id="content">
 

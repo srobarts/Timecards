@@ -16,11 +16,14 @@ class TimecardsController extends AppController {
 	
 	function index() {
 		$emp_num = $this->Session->Read('Auth.User.emp_num');
+		//$mgr_num = $this->Session->Read('Auth.User.emp_num');  //change this later
 		$group_id = $this->Session->Read('Auth.User.group_id');
+		//$this->Timecard->bindModel(array('hasOne'=>array('Users')));
 		if($group_id == 3) {
 			$this->set('timecards', $this->Timecard->find('all', array('fields'=>array('Timecard.*'), 'conditions'=>array('Timecard.emp_num'=> $emp_num))));
 		} else if($group_id == 1 || $group_id == 2) {
-			$this->set('timecards', $this->Timecard->find('all'));
+			$this->set('timecards', $this->Timecard->getTimecardsByManagerOrUser($emp_num));
+			//$this->set('timecards', $this->Timecard->find('all'));
 		}
 	}
 	

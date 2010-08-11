@@ -20,6 +20,17 @@ class User extends AppModel {
 		)
 	);
 	
+	var $hasMany = array(
+		'Timecard' => array(
+			'className' => 'Timecard',
+			'foreignKey' => 'emp_num',
+			'conditions' => '',
+			'order' => 'Timecard.created DESC',
+			'limit' => '5',
+			'dependent'=> true
+		)
+	); 
+	
 	//var $belongsTo = array('Group');
 	var $actsAs = array('Acl' => 'requester');
  
