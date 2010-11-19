@@ -12,7 +12,8 @@ class TimecardsController extends AppController {
     	parent::beforeFilter(); 
     	$this->Auth->allowedActions = array('index', 'view', 'view_timecard');
 	}
-	
+
+    //comment
 	
 	function index() {
 		$emp_num = $this->Session->Read('Auth.User.emp_num');
