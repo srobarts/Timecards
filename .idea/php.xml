@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpProjectConfiguration">
+    <sdk>
+      <PhpSdkConfig version="5.2.14">
+        <include_paths>
+          <path value="." />
+          <path value="C:\Program Files (x86)\Zend\ZendServer\share\ZendFramework\library" />
+        </include_paths>
+      </PhpSdkConfig>
+    </sdk>
+  </component>
+</project>
+
